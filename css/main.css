@@ -1,0 +1,38 @@
+:root {
+    font-family: sans-serif;
+    font-size: 16px;
+    --text-primary: #b6b6b6;
+    --text-secondary: #ececec;
+    --bg-primary: #23232e;
+    --bg-secondary: #141418;
+    --transition-speed: 600ms;
+    
+}
+
+body {
+    color: #000000;
+    background-color: #e0f2f1;
+    margin: 0;
+    padding: 0;
+}
+
+body::-webkit-scrollbar {
+    background: #1e1e24;
+    width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #00695c;
+}
+
+main {
+    margin-left: 5rem;
+    padding: 1rem;
+}
+
+/* Small Screens */
+@media only screen and (max-width: 600px) {
+    main {
+        margin: 0;
+    }
+}
