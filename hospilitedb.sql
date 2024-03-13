@@ -1,0 +1,12 @@
+CREATE TABLE users(
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    fullname VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    phone VARCHAR(15) NOT NULL,
+    dob VARCHAR(50) NOT NULL,
+    gender VARCHAR(10) NOT NULL,
+    pwd VARCHAR(25) NOT NULL,
+    user_role VARCHAR(10) NOT NULL DEFAULT "user", 
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIME,
+    PRIMARY KEY(id)
+);
