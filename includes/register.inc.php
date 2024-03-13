@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cpwd = $_POST["cpwd"];
 
     try {
-        require_once "./dbh.inc.php";
+        require_once "./db.inc.php";
         require_once "./mvc_register/register_model.inc.php";
         require_once "./mvc_register/register_contr.inc.php";
 
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (is_phone_invalid($phone)) {
             $errors["invalid_phone"] = "Please enter valid Phone Number";
         }
-        if (is_password_match($pwd, $cpwd)) {
+        if (!is_password_match($pwd, $cpwd)) {
             $errors["pwd_not_match"] = "Password and Confirm Passwords does not match.";
         }
         if (is_email_registered($pdo, $email)) {
@@ -37,18 +37,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         require_once "config_session.inc.php";
         
         if ($errors){
-            $_SESSION["errors_signup"] = $errors;
+            $_SESSION["errors_register"] = $errors;
 
-            $signupData = [
+            $registerData = [
                 "fullname" => $fullname,
                 "email" => $email,
                 "phone" => $phone,
                 "dob"=> $dob,
                 "gender"=> $gender
-
             ];
 
-            $_SESSION["signup_data"] = $signupData;
+            $_SESSION["register_data"] = $registerData;
 
             header("Location: ../page/register.php");
             die();

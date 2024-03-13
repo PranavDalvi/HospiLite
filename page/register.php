@@ -1,3 +1,8 @@
+<?php
+    require_once "../includes/config_session.inc.php";
+    require_once "../includes/mvc_register/register_view.inc.php";
+?> 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,45 +20,45 @@
     <div class="reg-body">
         <div class="reg-container">
             <h1 class="header">Registration Form</h1>
-            <form action="#" class="form">
+            <form action="../includes/register.inc.php" class="form" method="post">
                 <div class="input-box">
                     <label for="fullName">Full Name</label>
-                    <input id="fullName" type="text" placeholder="Enter Full Name" pattern="[a-zA-Z]+" required>
+                    <input name="fullname" id="fullName" type="text" placeholder="Enter Full Name" require>
                 </div>
                 <div class="input-box">
                     <label for="eMail">Email Address</label>
-                    <input id="eMail" type="email" placeholder="Enter Email Address" required>
+                    <input name="email" id="eMail" type="email" placeholder="Enter Email Address" require>
                 </div>
                 <div class="column">
                     <div class="input-box">
                         <label for="phoneNo">Phone Number</label>
-                        <input id="phoneNo" type="tel" placeholder="Enter Phone No." pattern="[0-9]{10}" required>
+                        <input name="phone" id="phoneNo" type="tel" placeholder="Enter Phone No." pattern="[0-9]{10}" require>
                     </div>
                     <div class="input-box">
                         <label for="birthDate">Birth Date</label>
-                        <input id="birthDate" type="date" placeholder="Enter Birth Date" required>
+                        <input name="dob" id="birthDate" type="date" placeholder="Enter Birth Date" require>
                     </div>
                 </div>
                 <div class="gender-container">
                     <h3>Gender</h3>
                     <div class="gender-option">
                         <div class="gender">
-                            <input type="radio" id="check-male" name="gender" />
+                            <input type="radio" id="check-male" name="gender" value="male"/>
                             <label for="check-male">Male</label>
                         </div>
                         <div class="gender">
-                            <input type="radio" id="check-female" name="gender" />
+                            <input type="radio" id="check-female" name="gender" value="female"/>
                             <label for="check-female">female</label>
                         </div>
                         <div class="gender">
-                            <input type="radio" id="check-na" name="gender" checked />
+                            <input type="radio" id="check-na" name="gender" checked value="N/A"/>
                             <label for="check-na">Prefer not to say</label>
                         </div>
                     </div>
                 </div>
                 <!-- <div class="input-box address">
                     <label for="address">Address</label>
-                    <input id="address" type="text" placeholder="Enter Address Line 1" required>
+                    <input id="address" type="text" placeholder="Enter Address Line 1" >
                     <input type="text" placeholder="Enter Address Line 2">
                     <div class="column">
                         <div class="select-container">
@@ -65,23 +70,26 @@
                                 <option value="">India</option>
                             </select>
                         </div>
-                        <input type="text" placeholder="Enter City" required>
+                        <input type="text" placeholder="Enter City" >
                     </div>
                     <div class="column">
-                        <input type="text" placeholder="Enter Region" required>
-                        <input type="number" placeholder="Enter postal code" required>
+                        <input type="text" placeholder="Enter Region" >
+                        <input type="number" placeholder="Enter postal code" >
                     </div>
                 </div> -->
                 <div class="input-box">
                     <label for="pass">Password</label>
-                    <input id="pass" type="password" placeholder="Enter Password" pattern=".{6,}" required>
+                    <input name="pwd" id="pass" type="password" placeholder="Enter Password" pattern=".{6,}" >
                 </div>
                 <div class="input-box">
                     <label for="con_pass">Confirm Password</label>
-                    <input id="con_pass" type="password" placeholder="Confirm Password" required>
+                    <input name="cpwd" id="con_pass" type="password" placeholder="Confirm Password" >
                 </div>
                 <button class="submit-btn">Submit</button>
             </form>
+            <?php 
+                check_register_errors();
+            ?>
         </div>
     </div>
     </div>
