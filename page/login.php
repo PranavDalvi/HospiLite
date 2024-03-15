@@ -1,3 +1,8 @@
+<?php
+require_once "../includes/config_session.inc.php";
+require_once "../includes/mvc_login/login_view.inc.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,14 +19,14 @@
     <h1 class="header">HospiLite - Hospital Management System</h1>
     <div class="container">
         <h1 class="header">Login</h1>
-    <form>
+    <form action="../includes/login.inc.php" method="post">
         <div class="text_field">
-            <input type="email" required>
+            <input type="email" name="email" required>
             <span></span>
             <label>E-mail</label>
         </div>
         <div class="text_field">
-            <input type="password" required>
+            <input type="password" name="pwd" required>
             <span></span>
             <label>Password</label>
         </div>
@@ -34,6 +39,9 @@
         </div>
     </form>
 </div>
+    <?php
+    check_login_errors();
+    ?>
 </body>
 
 </html>
