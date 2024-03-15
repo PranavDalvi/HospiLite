@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         create_user($pdo, $fullname, $email, $phone, $dob, $gender, $cpwd);
 
-        header("Location: ../page/dashboard.php?register=success");
+        header("Location: ../page/login.php?register=success");
         $pdo = null;
         $stmt = null;
         die();
