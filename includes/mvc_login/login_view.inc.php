@@ -5,7 +5,7 @@ declare(strict_types=1);
 function output_fullname()
 {
     if (isset($_SESSION["user_id"])) {
-        echo "Hello " . $_SESSION["user_fullname"];
+        echo "Welcome " . $_SESSION["user_fullname"];
     } else {
         echo "Please login / register to continue";
     }

@@ -42,9 +42,47 @@ main {
     color: #610f0f;
 }
 
+.account-options{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 10%;
+}
+
+.account-options > button, 
+.account-options > form > button{
+    width: 150px;
+    height: 50px;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 400;
+    border: none;
+    color: #fff;
+    background-color: #00695C;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.account-options > button:hover, 
+.account-options > form > button:hover{
+    background-color: #00312b;
+}
+
+.btn-red{
+    background-color: #d32f2f !important;
+}
 /* Small Screens */
 @media only screen and (max-width: 600px) {
     main {
         margin: 0;
+    }
+    .account-options{
+        flex-direction: column;
+    }
+    .account-options > button, 
+    .account-options > form > button{
+        margin: 10px 0px;
     }
 }
