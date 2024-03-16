@@ -1,9 +1,3 @@
-body {
-    font-size: 1.125rem;
-    font-family: system-ui;
-    line-height: 1.5;
-}
-
 .wrapper{
     width: min(900px, 100% - 3rem);
     margin-inline: auto;

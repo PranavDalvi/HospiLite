@@ -1,6 +1,7 @@
 <?php
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $pwd = $_POST["pwd"];
     try {
         require_once "./db.inc.php";
         require_once "./mvc_delete_account/delete_account_model.inc.php";
@@ -14,6 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if (is_only_one_admin_remaining($rowCount)) {
                 $errors["one_admin_required"] = "At least one admin required to manage the HMS.";
             }
+        }
+        if(is_pwd_invalid($pwd, $_SESSION["pwd"])){
+            $errors["login_incorrect"] = "Incorrect login info.";
         }
 
 

@@ -14,6 +14,7 @@ body {
     background-color: #e0f2f1;
     margin: 0;
     padding: 0;
+    line-height: 1.5;
 }
 
 body::-webkit-scrollbar {
@@ -71,7 +72,17 @@ main {
 }
 
 .btn-red{
+    width: 150px;
+    height: 50px;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: 400;
+    border: none;
+    color: #fff;
     background-color: #d32f2f !important;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 /* Small Screens */
 @media only screen and (max-width: 600px) {

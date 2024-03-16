@@ -13,6 +13,9 @@ include_once "../includes/mvc_delete_account/delete_account_view.inc.php";
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/modal_window.css">
+    <link rel="stylesheet" href="../css/login_register.css">
+
 </head>
 
 <body>
@@ -60,16 +63,31 @@ include_once "../includes/mvc_delete_account/delete_account_view.inc.php";
                     <button>Logout</button>
                 </form>
                 <button>Update Details</button>
-                <form action="../includes/delete_account.inc.php" method="post">
-                    <button class="btn-red">Delete Account</button>
-                </form>
+                <button class="btn-red show-modal">Delete Account</button>
             </div>
-            <?php 
+            <?php
             check_acc_del_errors();
             ?>
         </div>
 
     </main>
+    <div class="modal hidden">
+        <button class="close-modal">&times;</button>
+        <h1>Delete Account?</h1>
+        <p>Once deleted, account cannot be restored. Please be carefull. All data will be deleted.</p>
+        <p>Please enter your password to authenticate:</p>
+        <form action="../includes/delete_account.inc.php" method="post">
+            <div class="text_field">
+                <input type="password" name="pwd" required>
+                <span></span>
+                <label>Password</label>
+            </div>
+            <button class="btn-red">Delete Account</button>
+        </form>
+    </div>
+    <div class="overlay hidden"></div>
+
+    <script src="../scripts/modal_window.js"></script>
 </body>
 
 </html>

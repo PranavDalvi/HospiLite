@@ -40,6 +40,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $_SESSION["user_id"] = $result["id"];
         $_SESSION["user_name"] = htmlspecialchars($result["fullname"]);
         $_SESSION["email"] = htmlspecialchars($result["email"]);
+        $_SESSION["pwd"] = $result["pwd"];
         $_SESSION["phone"] = htmlspecialchars($result["phone"]);
         $_SESSION["dob"] = htmlspecialchars($result["dob"]);
         $_SESSION["gender"] = htmlspecialchars($result["gender"]);
