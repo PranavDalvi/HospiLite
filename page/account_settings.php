@@ -62,7 +62,10 @@ include_once "../includes/mvc_delete_account/delete_account_view.inc.php";
                 <form action="../includes/logout.inc.php" method="post">
                     <button>Logout</button>
                 </form>
-                <button>Update Details</button>
+                <form action="./update_pwd.php" method="post">
+                <button>Update Password</button>          
+                </form>
+                
                 <button class="btn-red show-modal">Delete Account</button>
             </div>
             <?php
