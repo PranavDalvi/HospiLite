@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($errors) {
             $_SESSION["errors_delete_account"] = $errors;
 
-            header("Location: ../page/account_settings.php");
+            header("Location: ../page/delete_account.php");
             die();
         }
 
@@ -42,6 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Query failed: " . $error->getMessage());
     }
 } else {
-    header("Location: ../page/account_settings.php");
+    header("Location: ../page/delete_account.php");
     die();
 }

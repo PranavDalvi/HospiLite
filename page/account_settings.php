@@ -1,6 +1,5 @@
 <?php
 include_once "../includes/config_session.inc.php";
-include_once "../includes/mvc_delete_account/delete_account_view.inc.php";
 ?>
 
 <!DOCTYPE html>
@@ -59,38 +58,27 @@ include_once "../includes/mvc_delete_account/delete_account_view.inc.php";
                 </tbody>
             </table>
             <div class="account-options">
-                <form action="../includes/logout.inc.php" method="post">
-                    <button>Logout</button>
-                </form>
-                <form action="./update_pwd.php" method="post">
-                <button>Update Password</button>          
-                </form>
-                
-                <button class="btn-red show-modal">Delete Account</button>
+                <div class="spacing">
+                    <form action="../includes/logout.inc.php" method="post">
+                        <button class="btn-submit">Logout</button>
+                    </form>
+
+                    <form action="./update_pwd.php" method="post">
+                        <button class="btn-submit">Update Password</button>
+                    </form>
+                </div>
+
+                <div class="spacing">
+                    <form action="./update_contact.php" method="post">
+                        <button class="btn-submit">Update Contact</button>
+                    </form>
+                    <form action="./delete_account.php">
+                    <button class="btn-red">Delete Account</button>
+                    </form>
+                </div>
             </div>
-            <?php
-            check_acc_del_errors();
-            ?>
         </div>
-
     </main>
-    <div class="modal hidden">
-        <button class="close-modal">&times;</button>
-        <h1>Delete Account?</h1>
-        <p>Once deleted, account cannot be restored. Please be carefull. All data will be deleted.</p>
-        <p>Please enter your password to authenticate:</p>
-        <form action="../includes/delete_account.inc.php" method="post">
-            <div class="text_field">
-                <input type="password" name="pwd" required>
-                <span></span>
-                <label>Password</label>
-            </div>
-            <button class="btn-red">Delete Account</button>
-        </form>
-    </div>
-    <div class="overlay hidden"></div>
-
-    <script src="../scripts/modal_window.js"></script>
 </body>
 
 </html>

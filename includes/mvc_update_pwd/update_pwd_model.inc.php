@@ -8,6 +8,5 @@ function updatePwd(object $pdo, int $id, string $pwd){
     $hashedPwd = password_hash($pwd, PASSWORD_BCRYPT, $options);
     $stmt->bindParam(":id", $id);
     $stmt->bindParam(":pwd", $hashedPwd);
-
-
+    $stmt->execute();
 }

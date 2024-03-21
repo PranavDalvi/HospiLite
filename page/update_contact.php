@@ -1,6 +1,6 @@
 <?php
     require_once "../includes/config_session.inc.php";
-    require_once "../includes/mvc_update_pwd/update_pwd_view.inc.php";
+    require_once "../includes/mvc_update_contact/update_contact_view.inc.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,27 +31,31 @@
     <main>
         <div class="reg-body">
             <div class="reg-container">
-                <h1>Update Password</h1>
-                <form action="../includes/update_pwd.inc.php" method="post">
+                <h1>Update Contact Details</h1>
+                <form action="../includes/update_contact.inc.php" method="post">
                     <div class="text_field">
-                        <input type="password" name="old_pwd" required>
+                        <?php 
+                            echo '<input type="text" name="email" value=' . $_SESSION["email"] .' required>';
+                        ?>
                         <span></span>
-                        <label>Old Password</label>
+                        <label>E-mail</label>
                     </div>
                     <div class="text_field">
-                        <input type="password" name="new_pwd" required>
+                        <?php 
+                            echo '<input type="text" name="phone" value=' . $_SESSION["phone"] .' required>';
+                        ?>
                         <span></span>
-                        <label>New Password</label>
+                        <label>Phone</label>
                     </div>
                     <div class="text_field">
-                        <input type="password" name="c_pwd" required>
+                        <input type="password" name="pwd" required>
                         <span></span>
-                        <label>Confirm Password</label>
+                        <label>Password</label>
                     </div>
-                    <button class="submit-btn">Update Password</button>
+                    <button class="submit-btn">Update Contact Details</button>
                 </form>
                 <?php
-                check_update_pwd_errors();
+                check_update_contact_errors();
                 ?>
             </div>
         </div>
