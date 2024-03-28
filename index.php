@@ -8,6 +8,6 @@
     <link rel="stylesheet" href="./css/navbar.css">
 </head>
 <body>
-    
+    <?php header("Location: ./page/login.php"); ?>
 </body>
 </html>

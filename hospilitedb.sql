@@ -5,7 +5,7 @@ CREATE TABLE users(
     phone VARCHAR(15) NOT NULL,
     dob VARCHAR(50) NOT NULL,
     gender VARCHAR(10) NOT NULL,
-    pwd VARCHAR(25) NOT NULL,
+    pwd VARCHAR(60) NOT NULL,
     user_role VARCHAR(10) NOT NULL DEFAULT "user", 
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIME,
     PRIMARY KEY(id)

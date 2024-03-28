@@ -1,7 +1,7 @@
 <?php
-    require_once "../includes/config_session.inc.php";
-    require_once "../includes/mvc_register/register_view.inc.php";
-?> 
+require_once "../includes/config_session.inc.php";
+require_once "../includes/mvc_register/register_view.inc.php";
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,15 +43,15 @@
                     <h3>Gender</h3>
                     <div class="gender-option">
                         <div class="gender">
-                            <input type="radio" id="check-male" name="gender" value="male"/>
+                            <input type="radio" id="check-male" name="gender" value="male" />
                             <label for="check-male">Male</label>
                         </div>
                         <div class="gender">
-                            <input type="radio" id="check-female" name="gender" value="female"/>
+                            <input type="radio" id="check-female" name="gender" value="female" />
                             <label for="check-female">female</label>
                         </div>
                         <div class="gender">
-                            <input type="radio" id="check-na" name="gender" checked value="N/A"/>
+                            <input type="radio" id="check-na" name="gender" checked value="N/A" />
                             <label for="check-na">Prefer not to say</label>
                         </div>
                     </div>
@@ -79,16 +79,16 @@
                 </div> -->
                 <div class="input-box">
                     <label for="pass">Password</label>
-                    <input name="pwd" id="pass" type="password" placeholder="Enter Password" pattern=".{6,}" >
+                    <input name="pwd" id="pass" type="password" placeholder="Enter Password" pattern=".{6,}">
                 </div>
                 <div class="input-box">
                     <label for="con_pass">Confirm Password</label>
-                    <input name="cpwd" id="con_pass" type="password" placeholder="Confirm Password" >
+                    <input name="cpwd" id="con_pass" type="password" placeholder="Confirm Password">
                 </div>
                 <button class="submit-btn">Submit</button>
             </form>
-            <?php 
-                check_register_errors();
+            <?php
+            check_register_errors();
             ?>
         </div>
     </div>

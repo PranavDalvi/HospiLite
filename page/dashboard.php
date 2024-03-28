@@ -17,17 +17,17 @@ include_once "../includes/config_session.inc.php";
     <main>
     </main>
     <?php
-        if(isset($_SESSION["user_id"]) && $_SESSION["user_role"] === "admin"){
-            include_once "../components/dashboard_admin.php";
-        } else if (isset($_SESSION["user_id"]) && $_SESSION["user_role"] === "user"){
-            include_once "../components/dashboard_user.php";
-        } else if (isset($_SESSION["user_id"]) && $_SESSION["user_role"] === "doctor"){
-            include_once "../components/dashboard_doctor.php";
-        } else if (isset($_SESSION["user_id"]) && $_SESSION["user_role"] === "clerk"){
-            include_once "../components/dashboard_clerk.php";
-        } else {
-            header("Location: ./login.php");
-        }
+    if (isset($_SESSION["user_id"]) && $_SESSION["user_role"] === "admin") {
+        include_once "../components/dashboard_admin.php";
+    } else if (isset($_SESSION["user_id"]) && $_SESSION["user_role"] === "user") {
+        include_once "../components/dashboard_user.php";
+    } else if (isset($_SESSION["user_id"]) && $_SESSION["user_role"] === "doctor") {
+        include_once "../components/dashboard_doctor.php";
+    } else if (isset($_SESSION["user_id"]) && $_SESSION["user_role"] === "clerk") {
+        include_once "../components/dashboard_clerk.php";
+    } else {
+        header("Location: ./login.php");
+    }
     ?>
 </body>
 

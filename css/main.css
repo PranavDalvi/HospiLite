@@ -43,7 +43,7 @@ main {
     color: #610f0f;
 }
 
-.account-options{
+.btn-options{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -95,9 +95,9 @@ main {
 /* Small Screens */
 @media only screen and (max-width: 600px) {
     main {
-        margin: 0;
+        margin: 0 0 70px 0;
     }
-    .account-options{
+    .btn-options{
         flex-direction: column;
     }
 

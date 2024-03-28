@@ -19,26 +19,26 @@ require_once "../includes/mvc_login/login_view.inc.php";
     <h1 class="header">HospiLite - Hospital Management System</h1>
     <div class="container">
         <h1 class="header">Login</h1>
-    <form action="../includes/login.inc.php" method="post">
-        <div class="text_field">
-            <input type="email" name="email" required>
-            <span></span>
-            <label>E-mail</label>
-        </div>
-        <div class="text_field">
-            <input type="password" name="pwd" required>
-            <span></span>
-            <label>Password</label>
-        </div>
-        <div class="forgot_pass">
-            <a href="#">Forgot Password?</a>
-        </div>
-        <button class="submit-btn">Login</button>
-        <div class="signup_link">
-            Not a member? <a href="./register.php">Register</a>
-        </div>
-    </form>
-</div>
+        <form action="../includes/login.inc.php" method="post">
+            <div class="text_field">
+                <input type="email" name="email" required>
+                <span></span>
+                <label>E-mail</label>
+            </div>
+            <div class="text_field">
+                <input type="password" name="pwd" required>
+                <span></span>
+                <label>Password</label>
+            </div>
+            <div class="forgot_pass">
+                <a href="#">Forgot Password?</a>
+            </div>
+            <button class="submit-btn">Login</button>
+            <div class="signup_link">
+                Not a member? <a href="./register.php">Register</a>
+            </div>
+        </form>
+    </div>
     <?php
     check_login_errors();
     ?>

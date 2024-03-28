@@ -1,6 +1,6 @@
 <?php
-    require_once "../includes/config_session.inc.php";
-    require_once "../includes/mvc_update_pwd/update_pwd_view.inc.php";
+require_once "../includes/config_session.inc.php";
+require_once "../includes/mvc_update_pwd/update_pwd_view.inc.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<?php
+    <?php
     if (isset($_SESSION["user_id"]) && $_SESSION["user_role"] === "admin") {
         include_once "../components/navbar_admin.php";
     } else if (isset($_SESSION["user_id"]) && $_SESSION["user_role"] === "user") {

@@ -12,7 +12,6 @@ include_once "../includes/config_session.inc.php";
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/navbar.css">
     <link rel="stylesheet" href="../css/table.css">
-    <link rel="stylesheet" href="../css/modal_window.css">
     <link rel="stylesheet" href="../css/login_register.css">
 
 </head>
@@ -57,7 +56,7 @@ include_once "../includes/config_session.inc.php";
                     </tr>
                 </tbody>
             </table>
-            <div class="account-options">
+            <div class="btn-options">
                 <div class="spacing">
                     <form action="../includes/logout.inc.php" method="post">
                         <button class="btn-submit">Logout</button>
@@ -73,7 +72,7 @@ include_once "../includes/config_session.inc.php";
                         <button class="btn-submit">Update Contact</button>
                     </form>
                     <form action="./delete_account.php">
-                    <button class="btn-red">Delete Account</button>
+                        <button class="btn-red">Delete Account</button>
                     </form>
                 </div>
             </div>
