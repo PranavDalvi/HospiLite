@@ -83,6 +83,29 @@ main {
     transition: all 0.2s ease;
 }
 
+.link-btn{
+    padding: 10px;
+    background-color: #00695C;
+    color: #fff;
+    font-weight: 400;
+    text-decoration: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.link-btn:hover{
+    background-color: #00312b;
+}
+
+.link-btn-red{
+    background-color: #d32f2f !important;
+}
+
+.link-btn-red:hover{
+    background-color: #610f0f !important;
+}
+
 .spacing{
     display: flex;
     flex-direction: row;
@@ -92,6 +115,7 @@ main {
     align-items: center;
     column-gap: 10px;
 }
+
 /* Small Screens */
 @media only screen and (max-width: 600px) {
     main {
