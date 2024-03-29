@@ -1,10 +1,15 @@
 <?php
+
 include_once "../components/navbar_admin.php";
-
 require_once "../includes/config_session.inc.php";
+require_once "../includes/mvc_edit_user/edit_user_model.inc.php";
+require_once "../includes/db.inc.php";
 
 
-if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"] !== "admin") {
+if (isset($_GET['id']) && !empty($_SESSION) && $_SESSION["user_role"] == "admin") {
+    $user_id = $_GET['id'];
+    $user_details = get_user_by_id($pdo, $user_id);
+} else {
     header("Location: ./login.php");
     die();
 }
@@ -32,86 +37,65 @@ if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"]
                 <form action="../includes/add_user.inc.php" class="form" method="post">
                     <div class="input-box">
                         <label for="fullName">Full Name</label>
-                        <input name="fullname" id="fullName" type="text" placeholder="Enter Full Name" require>
+                        <?php
+                        echo '<input name="fullname" id="fullName" type="text" placeholder="Enter Full Name" value=' . htmlspecialchars($user_details["fullname"]) . ' require>'
+                        ?>
                     </div>
                     <div class="input-box">
                         <label for="eMail">Email Address</label>
-                        <input name="email" id="eMail" type="email" placeholder="Enter Email Address" require>
+                        <?php
+                        echo '<input type="text" name="email" value=' . $user_details["email"] . ' required>';
+                        ?>
                     </div>
                     <div class="column">
                         <div class="input-box">
                             <label for="phoneNo">Phone Number</label>
-                            <input name="phone" id="phoneNo" type="tel" placeholder="Enter Phone No." pattern="[0-9]{10}" require>
+                            <?php
+                            echo '<input name="phone" id="phoneNo" type="tel" placeholder="Enter Phone No." pattern="[0-9]{10}" value=' . htmlspecialchars($user_details["phone"]) . ' require>';
+                            ?>
                         </div>
                         <div class="input-box">
                             <label for="birthDate">Birth Date</label>
-                            <input name="dob" id="birthDate" type="date" placeholder="Enter Birth Date" require>
+                            <?php
+                            echo ' <input name="dob" id="birthDate" type="date" placeholder="Enter Birth Date" value=' . htmlspecialchars($user_details["dob"]) . ' require>'
+                            ?>
                         </div>
                     </div>
                     <div class="gender-container">
                         <h3>Gender</h3>
                         <div class="gender-option">
                             <div class="gender">
-                                <input type="radio" id="check-male" name="gender" value="male" />
+                                <input type="radio" id="check-male" name="gender" value="male" <?php if ( $user_details["gender"] == "male") {echo "checked";} ?>/>
                                 <label for="check-male">Male</label>
                             </div>
                             <div class="gender">
-                                <input type="radio" id="check-female" name="gender" value="female" />
+                                <input type="radio" id="check-female" name="gender" value="female" <?php if ( $user_details["gender"] == "female") {echo "checked";} ?>/>
                                 <label for="check-female">female</label>
                             </div>
                             <div class="gender">
-                                <input type="radio" id="check-na" name="gender" checked value="N/A" />
+                                <input type="radio" id="check-na" name="gender" value="N/A" <?php if ( $user_details["gender"] == "N/A") {echo "checked";} ?>/>
                                 <label for="check-na">Prefer not to say</label>
                             </div>
                         </div>
-                    </div>
-                    <!-- <div class="input-box address">
-                    <label for="address">Address</label>
-                    <input id="address" type="text" placeholder="Enter Address Line 1" >
-                    <input type="text" placeholder="Enter Address Line 2">
-                    <div class="column">
-                        <div class="select-container">
-                            <select name="" id="">
-                                <option value="" hidden>Country</option>
-                                <option value="">America</option>
-                                <option value="">Brazil</option>
-                                <option value="">Colombo</option>
-                                <option value="">India</option>
-                            </select>
-                        </div>
-                        <input type="text" placeholder="Enter City" >
-                    </div>
-                    <div class="column">
-                        <input type="text" placeholder="Enter Region" >
-                        <input type="number" placeholder="Enter postal code" >
-                    </div>
-                </div> -->
-                    <div class="input-box">
-                        <label for="pass">Password</label>
-                        <input name="pwd" id="pass" type="password" placeholder="Enter Password" pattern=".{6,}">
-                    </div>
-                    <div class="input-box">
-                        <label for="con_pass">Confirm Password</label>
-                        <input name="cpwd" id="con_pass" type="password" placeholder="Confirm Password">
                     </div>
 
                     <div class="gender-container">
                         <h3>Role</h3>
                         <div class="gender-option">
                             <div class="gender">
-                                <input type="radio" id="check-user" name="user_role" checked value="user" />
+                                <input type="radio" id="check-user" name="user_role" value="user" <?php if ( $user_details["user_role"] == "user") {echo "checked";} ?> />
                                 <label for="check-user">User</label>
                             </div>
                             <div class="gender">
-                                <input type="radio" id="check-clerk" name="user_role" value="clerk" />
+                                <input type="radio" id="check-clerk" name="user_role" value="clerk" <?php if ( $user_details["user_role"] == "clerk") {echo "checked";} ?>/>
                                 <label for="check-clerk">Clerk</label>
                             </div>
                             <div class="gender">
-                                <input type="radio" id="check-doctor" name="user_role" value="doctor" />
+                                <input type="radio" id="check-doctor" name="user_role" value="doctor" <?php if ( $user_details["user_role"] == "doctor") {echo "checked";} ?> />
                                 <label for="check-doctor">Doctor</label>
                             </div>
                             <div class="gender">
-                                <input type="radio" id="check-admin" name="user_role" value="admin" />
+                                <input type="radio" id="check-admin" name="user_role" value="admin" <?php if ( $user_details["user_role"] == "admin") {echo "checked";} ?> />
                                 <label for="check-admin">Admin</label>
                             </div>
                         </div>
