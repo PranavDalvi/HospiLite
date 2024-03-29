@@ -2,17 +2,23 @@
 require_once "./config_session.inc.php";
 
 
-if (isset($_GET['id']) && !empty($_SESSION) && $_SESSION["user_role"] == "admin"){
-    $user_id = $_GET['id'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fullname = $_POST["fullname"];
+    $email = $_POST["email"];
+    $phone = $_POST["phone"];
+    $dob = $_POST["dob"];
+    $gender = $_POST["gender"];
+    $user_role = $_POST["user_role"];
+
     try{
         require_once "./db.inc.php";
         require_once "./mvc_edit_user/edit_user_model.inc.php";
         require_once "./mvc_edit_user/edit_user_contr.inc.php";
 
-        $user_details = get_user_by_id($pdo, $user_id);
+        $sel_user_id = $_SESSION["sel_user_id"];
 
         $errors = [];
-        if (is_input_empty($fullname, $email, $phone, $dob, $gender, $pwd, $cpwd, $user_role)) {
+        if (is_input_empty($fullname, $email, $phone, $dob, $gender, $user_role)) {
             $errors["empty_input"] = "Please fill out all fields.";
         }
         if (is_email_invalid($email)) {
@@ -21,24 +27,21 @@ if (isset($_GET['id']) && !empty($_SESSION) && $_SESSION["user_role"] == "admin"
         if (is_phone_invalid($phone)) {
             $errors["invalid_phone"] = "Please enter valid Phone Number";
         }
-        if (!is_password_match($pwd, $cpwd)) {
-            $errors["pwd_not_match"] = "Password and Confirm Passwords does not match.";
-        }
-        if (is_email_registered($pdo, $email)) {
+        if (is_email_registered($pdo, $email, $sel_user_id)) {
             $errors["email_used"] = "E-mail already registered.";
         }
-        if (is_phone_registered($pdo, $phone)) {
+        if (is_phone_registered($pdo, $phone, $sel_user_id)) {
             $errors["phone_used"] = "Phone already registered.";
         }
 
         if ($errors) {
-            $_SESSION["errors_delete_account"] = $errors;
+            $_SESSION["errors_update_user"] = $errors;
 
             header("Location: ../page/view_all_users.php");
             die();
         }
 
-        delete_account($pdo, $user_id);
+        update_user($pdo, $sel_user_id, $fullname, $email, $phone,  $dob, $gender, $user_role);
 
         header("Location: ../page/view_all_users.php?usrdel=success");
     } catch (PDOException $error) {

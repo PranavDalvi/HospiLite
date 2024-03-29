@@ -9,6 +9,7 @@ require_once "../includes/db.inc.php";
 if (isset($_GET['id']) && !empty($_SESSION) && $_SESSION["user_role"] == "admin") {
     $user_id = $_GET['id'];
     $user_details = get_user_by_id($pdo, $user_id);
+    $_SESSION["sel_user_id"] = $user_id;
 } else {
     header("Location: ./login.php");
     die();
@@ -33,8 +34,7 @@ if (isset($_GET['id']) && !empty($_SESSION) && $_SESSION["user_role"] == "admin"
         <h2>HospiLite - Add User</h2>
         <div class="reg-body">
             <div class="reg-container">
-                <!-- <h1 class="header">Registration Form</h1> -->
-                <form action="../includes/add_user.inc.php" class="form" method="post">
+                <form action="../includes/edit_user.inc.php" class="form" method="post">
                     <div class="input-box">
                         <label for="fullName">Full Name</label>
                         <?php

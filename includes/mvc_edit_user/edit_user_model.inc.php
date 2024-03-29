@@ -1,6 +1,26 @@
 <?php
 declare(strict_types=1);
 
+function get_email(object $pdo, string $email){
+    $query = "SELECT id, email FROM users WHERE email = :email;";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":email", $email);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result;
+}
+
+function get_phone(object $pdo, string $phone){
+    $query = "SELECT id, phone FROM users WHERE phone = :phone;";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":phone",$phone);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result;
+}
+
 function update_user(object $pdo, int $id, string $fullname, string $email, string $phone,  string $dob, string $gender, string $user_role){
     $query = "UPDATE users SET fullname = :fullname, email = :email, phone = :phone, dob = :dob, gender = :gender, user_role = :user_role WHERE id = :id;";
     $stmt = $pdo->prepare($query);
