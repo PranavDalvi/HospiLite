@@ -1,0 +1,64 @@
+<mxfile host="Electron" modified="2024-03-30T06:45:50.092Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.1.0 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="lh6gMTF1TSB4bZ9Uo97m" version="24.1.0" type="device">
+  <diagram name="Page-1" id="pEXn41qFwoJ10QvHG2mL">
+    <mxGraphModel dx="1311" dy="775" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="afNZSd75MI_UhrFjNi8T-1" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="169" y="50" width="490" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="afNZSd75MI_UhrFjNi8T-2" target="afNZSd75MI_UhrFjNi8T-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-2" value="Admin" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="730" y="90" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.3333333333333333;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="afNZSd75MI_UhrFjNi8T-3" target="afNZSd75MI_UhrFjNi8T-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-3" value="Doctor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="730" y="300" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-5" value="Clerk" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="730" y="510" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="afNZSd75MI_UhrFjNi8T-8" target="afNZSd75MI_UhrFjNi8T-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-8" value="Patient (user)" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="300" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="afNZSd75MI_UhrFjNi8T-11" target="afNZSd75MI_UhrFjNi8T-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-11" value="Make appointment with doctors" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="300" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="afNZSd75MI_UhrFjNi8T-12" target="afNZSd75MI_UhrFjNi8T-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-12" value="Can assign fees and&amp;nbsp; next appointment details" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="515" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-13" value="Can assign prescriptions to user" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="300" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-14" value="Can access all users &amp;amp; records and can edit them (users details only)" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="100" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.021;entryY=0.369;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="afNZSd75MI_UhrFjNi8T-8" target="afNZSd75MI_UhrFjNi8T-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-21" value="Can view assigned prescriptions, fees, next appointment details" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="410" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1.004;entryY=0.282;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="afNZSd75MI_UhrFjNi8T-13" target="afNZSd75MI_UhrFjNi8T-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="afNZSd75MI_UhrFjNi8T-28" value="HospiLite System" style="whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="354" y="50" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
