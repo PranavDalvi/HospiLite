@@ -116,6 +116,19 @@ if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"]
                             </div>
                         </div>
                     </div>
+                    <div class="select-box">
+                        <label for="doctor_specialties">Doctor's specialty:</label>
+                        <select name="doctor_specialties" id="doctor_specialties">
+                            <option value="NULL">N/A (for other roles)</option>
+                            <option value="Audiologist">Audiologist</option>
+                            <option value="Allergist">Allergist</option>
+                            <option value="Anesthesiologist">Anesthesiologist</option>
+                            <option value="Cardiologist">Cardiologist</option>
+                            <option value="Dentist">Dentist</option>
+                            <option value="Dermatologist">Dermatologist</option>
+                            <option value="Endocrinologist">Endocrinologist</option>
+                        </select>
+                    </div>
                     <button class="submit-btn">Submit</button>
                 </form>
                 <?php

@@ -7,6 +7,7 @@ CREATE TABLE users(
     gender VARCHAR(10) NOT NULL,
     pwd VARCHAR(60) NOT NULL,
     user_role VARCHAR(10) NOT NULL DEFAULT "user", 
+    doctor_specialties VARCHAR(30) DEFAULT NULL,
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIME,
     PRIMARY KEY(id)
 );

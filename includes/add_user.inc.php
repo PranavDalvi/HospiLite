@@ -9,6 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pwd = $_POST["pwd"];
     $cpwd = $_POST["cpwd"];
     $user_role = $_POST["user_role"];
+    $doctor_specialty = $_POST["doctor_speciality"];
 
     try {
         require_once "./db.inc.php";
@@ -33,6 +34,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         if (is_phone_registered($pdo, $phone)) {
             $errors["phone_used"] = "Phone already registered.";
+        }
+
+        if (is_specialty_null($user_role, $doctor_specialty)){
+            $errors["doctor_specialty_null"] = "Doctor's specialty cannto be null.";
         }
 
         require_once "config_session.inc.php";
