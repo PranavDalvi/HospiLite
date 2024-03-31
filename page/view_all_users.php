@@ -4,7 +4,6 @@ require_once "../includes/config_session.inc.php";
 require_once "../includes/db.inc.php";
 require_once "../includes/mvc_view_all_users/view_all_users_model.inc.php";
 include_once "../includes/mvc_delete_account/delete_account_view.inc.php";
-include_once "../includes/mvc_edit_user/edit_user_view.inc.php";
 
 
 
@@ -67,7 +66,7 @@ if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"]
                                     <td data-cell="Gender">' . $result["gender"] . '</td>
                                     <td data-cell="Role">' . $result["user_role"] . '</td>
                                     <td data-cell="created At">' . $result["created_at"] . '</td>
-                                    <td data-cell="Operations"> <a class="link-btn" href="./edit_user.php?id='.$result["id"].'">Edit</a> <a class="link-btn link-btn-red" href="../includes/delete_user.inc.php?id='.$result["id"].'">Delete</a> </td>
+                                    <td data-cell="Operations"> <a class="link-btn" href="edit_user.inc.php?id='.$result["id"].'">Edit</a> <a class="link-btn link-btn-red" href="../includes/delete_user.inc.php?id='.$result["id"].'">Delete</a> </td>
 
                                 </tr>
                                 ';
@@ -83,7 +82,6 @@ if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"]
         </div>
         <?php
                 check_acc_del_errors();
-                check_edit_user_errors();
             ?>
     </main>
 </body>

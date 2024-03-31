@@ -6,7 +6,6 @@ require_once "../includes/config_session.inc.php";
 
 if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"] !== "admin") {
     header("Location: ./login.php");
-    die();
 }
 ?>
 

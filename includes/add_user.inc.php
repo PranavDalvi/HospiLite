@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pwd = $_POST["pwd"];
     $cpwd = $_POST["cpwd"];
     $user_role = $_POST["user_role"];
-    $doctor_specialty = $_POST["doctor_speciality"];
+    $doctor_specialty = $_POST["doctor_specialties"];
 
     try {
         require_once "./db.inc.php";
@@ -60,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die();
         }
 
-        create_user($pdo, $fullname, $email, $phone, $dob, $gender, $cpwd, $user_role);
+        create_user($pdo, $fullname, $email, $phone, $dob, $gender, $cpwd, $user_role, $doctor_specialty);
 
         header("Location: ../page/add_user.php?addUser=success");
         $pdo = null;
