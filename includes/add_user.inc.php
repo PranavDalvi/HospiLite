@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if (is_specialty_null($user_role, $doctor_specialty)){
-            $errors["doctor_specialty_null"] = "Doctor's specialty cannto be null.";
+            $errors["doctor_specialty_null"] = "Doctor's specialty cannot be null.";
         }
 
         require_once "config_session.inc.php";

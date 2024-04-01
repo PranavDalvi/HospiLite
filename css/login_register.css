@@ -161,6 +161,19 @@
     border: 1px solid #00695C;
 }
 
+.input-box select{
+    height: 50px;
+    width: 100%;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 0, 15px;
+    margin-top: 8px;
+    color: #707070;
+    background-color: #fff;
+
+}
+
 .form .column{
     display: flex;
     column-gap: 15px;

@@ -2,6 +2,7 @@
 include_once "../components/navbar_admin.php";
 
 require_once "../includes/config_session.inc.php";
+require_once "../includes/mvc_add_user/add_user_view.inc.php";
 
 
 if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"] !== "admin") {
@@ -115,7 +116,7 @@ if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"]
                             </div>
                         </div>
                     </div>
-                    <div class="select-box">
+                    <div class="input-box">
                         <label for="doctor_specialties">Doctor's specialty:</label>
                         <select name="doctor_specialties" id="doctor_specialties">
                             <option value="NULL">N/A (for other roles)</option>
@@ -131,7 +132,7 @@ if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"]
                     <button class="submit-btn">Submit</button>
                 </form>
                 <?php
-
+                    check_new_user_errors()
                 ?>
             </div>
         </div>

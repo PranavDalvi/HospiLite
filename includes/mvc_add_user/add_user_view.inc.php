@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-function check_register_errors()
+function check_new_user_errors()
 {
-    if (isset($_SESSION["errors_register"])) {
-        $errors = $_SESSION["errors_register"];
+    if (isset($_SESSION["errors_add_user"])) {
+        $errors = $_SESSION["errors_add_user"];
 
         echo "<br>";
 
@@ -15,7 +15,7 @@ function check_register_errors()
             echo '<p class="error-text">ERROR: ' . $error . '</p>';
             echo '</div>';
         }
-        unset($_SESSION["errors_register"]);
+        unset($_SESSION["errors_add_user"]);
     } else if (isset($_GET["register"]) && $_GET["register"] === "success") {
         echo '<div class="success-body">';
         echo '<p class="success-text">Registered Successfully</p>';

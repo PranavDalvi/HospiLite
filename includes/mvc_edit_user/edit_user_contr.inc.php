@@ -46,6 +46,16 @@ function is_phone_registered(object $pdo, string $phone, int $sel_user_id){
     }
 }
 
-function create_user(object $pdo, string $fullname, string $email, string $phone,  string $dob, string $gender, string $cpwd){
-    set_User($pdo, $fullname, $email, $phone, $dob, $gender, $cpwd);
+
+function is_specialty_null(string $user_role, string $doctor_specialty)
+{
+    if ($user_role === "doctor" && $doctor_specialty === "NULL") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function edit_user(object $pdo, int $id, string $fullname, string $email, string $phone,  string $dob, string $gender, string $user_role, string $doctor_specialty){
+    edit_user_query($pdo, $id, $fullname, $email, $phone, $dob, $gender, $user_role, $doctor_specialty);
 }

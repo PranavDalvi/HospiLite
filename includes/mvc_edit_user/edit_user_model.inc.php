@@ -21,8 +21,8 @@ function get_phone(object $pdo, string $phone){
     return $result;
 }
 
-function update_user(object $pdo, int $id, string $fullname, string $email, string $phone,  string $dob, string $gender, string $user_role){
-    $query = "UPDATE users SET fullname = :fullname, email = :email, phone = :phone, dob = :dob, gender = :gender, user_role = :user_role WHERE id = :id;";
+function edit_user_query(object $pdo, int $id, string $fullname, string $email, string $phone,  string $dob, string $gender, string $user_role, string $doctor_specialty){
+    $query = "UPDATE users SET fullname = :fullname, email = :email, phone = :phone, dob = :dob, gender = :gender, user_role = :user_role, doctor_specialties = :doctor_specialties  WHERE id = :id;";
     $stmt = $pdo->prepare($query);
 
     $stmt->bindParam(":id", $id);
@@ -32,6 +32,7 @@ function update_user(object $pdo, int $id, string $fullname, string $email, stri
     $stmt->bindParam(":dob", $dob);
     $stmt->bindParam(":gender", $gender);
     $stmt->bindParam(":user_role", $user_role);
+    $stmt->bindParam(":doctor_specialties", $doctor_specialty);
 
     $stmt->execute();
 }

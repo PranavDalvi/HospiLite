@@ -9,8 +9,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dob = $_POST["dob"];
     $gender = $_POST["gender"];
     $user_role = $_POST["user_role"];
+    $doctor_specialty = $_POST["doctor_specialties"];
 
-    try{
+    try {
         require_once "./db.inc.php";
         require_once "./mvc_edit_user/edit_user_model.inc.php";
         require_once "./mvc_edit_user/edit_user_contr.inc.php";
@@ -34,6 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors["phone_used"] = "Phone already registered.";
         }
 
+        if (is_specialty_null($user_role, $doctor_specialty)) {
+            $errors["doctor_specialty_null"] = "Doctor's specialty cannot be null.";
+        }
+
         if ($errors) {
             $_SESSION["errors_update_user"] = $errors;
 
@@ -41,13 +46,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die();
         }
 
-        update_user($pdo, $sel_user_id, $fullname, $email, $phone,  $dob, $gender, $user_role);
+        edit_user($pdo, $sel_user_id, $fullname, $email, $phone, $dob, $gender, $user_role, $doctor_specialty);
 
         header("Location: ../page/view_all_users.php?usrdel=success");
     } catch (PDOException $error) {
         die("Query failed: " . $error->getMessage());
     }
-} else{
+} else {
     header("Location: ../page/dashboard.php");
     die();
 }
