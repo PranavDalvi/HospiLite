@@ -40,6 +40,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $errors["doctor_specialty_null"] = "Doctor's specialty cannot be null.";
         }
 
+        if (is_specialty_invalid($user_role, $doctor_specialty)){
+            $errors["doctor_specialty_invalid"] = "Other role(s) cannot have Doctor's specialty.";
+        }
+
         require_once "config_session.inc.php";
         
         if ($errors){

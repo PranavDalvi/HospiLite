@@ -56,6 +56,14 @@ function is_specialty_null(string $user_role, string $doctor_specialty)
     }
 }
 
+function is_specialty_invalid(string $user_role, string $doctor_specialty){
+    if ($user_role !== "doctor" && $doctor_specialty !== "NULL") {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function edit_user(object $pdo, int $id, string $fullname, string $email, string $phone,  string $dob, string $gender, string $user_role, string $doctor_specialty){
     edit_user_query($pdo, $id, $fullname, $email, $phone, $dob, $gender, $user_role, $doctor_specialty);
 }

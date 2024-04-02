@@ -68,7 +68,7 @@ if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"]
                                     <td data-cell="Gender">' . $result["gender"] . '</td>
                                     <td data-cell="Role">' . $result["user_role"] . '</td>
                                     <td data-cell="created At">' . $result["created_at"] . '</td>
-                                    <td data-cell="Operations"> <a class="link-btn" href="edit_user.php?id='.$result["id"].'">Edit</a> <a class="link-btn link-btn-red" href="../includes/delete_user.inc.php?id='.$result["id"].'">Delete</a> </td>
+                                    <td data-cell="Operations"> <a class="link-btn" href="edit_user.php?id='.$result["id"].'">Edit</a> <a class="link-btn link-btn-red" href="./delete_user.php?id='.$result["id"].'">Delete</a> </td>
 
                                 </tr>
                                 ';
