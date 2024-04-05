@@ -36,4 +36,4 @@ CREATE TABLE doctors(
     id INT PRIMARY KEY,
     doctor_specialties VARCHAR(30) DEFAULT NULL,
     FOREIGN KEY (id) REFERENCES users(id) ON DELETE CASCADE
-)
+);

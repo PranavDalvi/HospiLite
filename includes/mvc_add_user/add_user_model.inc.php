@@ -23,7 +23,7 @@ function get_phone(object $pdo, string $phone){
 }
 
 function set_user(object $pdo, string $fullname, string $email, string $phone,  string $dob, string $gender, string $cpwd, string $user_role, string $doctor_specialty){
-    $query = "INSERT INTO users (fullname, email, phone, dob, gender, pwd, user_role, doctor_specialties) VALUES (:fullname, :email, :phone, :dob, :gender, :pwd, :user_role, :doctor_specialty);";
+    $query = "INSERT INTO users (fullname, email, phone, dob, gender, pwd, user_role) VALUES (:fullname, :email, :phone, :dob, :gender, :pwd, :user_role);";
     $stmt = $pdo->prepare($query);
 
     $options = ["cost" => 12];
@@ -37,7 +37,15 @@ function set_user(object $pdo, string $fullname, string $email, string $phone,  
     $stmt->bindParam(":gender", $gender);
     $stmt->bindParam(":pwd", $hashedPwd);
     $stmt->bindParam(":user_role", $user_role);
-    $stmt->bindParam(":doctor_specialty", $doctor_specialty);
-
+    
     $stmt->execute();
+    
+    if ($user_role === "doctor" && $doctor_specialty !== "NULL"){
+        $new_user_id = $pdo->lastInsertId();
+        $query = "INSERT INTO doctors (id, doctor_specialties) VALUES (:new_user_id, :doctor_specialty);";
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(":new_user_id", $new_user_id);
+        $stmt->bindParam(":doctor_specialty", $doctor_specialty);
+        $stmt->execute();
+    }
 }

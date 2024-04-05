@@ -22,7 +22,7 @@ function get_phone(object $pdo, string $phone){
 }
 
 function edit_user_query(object $pdo, int $id, string $fullname, string $email, string $phone,  string $dob, string $gender, string $user_role, string $doctor_specialty){
-    $query = "UPDATE users SET fullname = :fullname, email = :email, phone = :phone, dob = :dob, gender = :gender, user_role = :user_role, doctor_specialties = :doctor_specialties  WHERE id = :id;";
+    $query = "UPDATE users SET fullname = :fullname, email = :email, phone = :phone, dob = :dob, gender = :gender, user_role = :user_role  WHERE id = :id;";
     $stmt = $pdo->prepare($query);
 
     $stmt->bindParam(":id", $id);
@@ -32,9 +32,24 @@ function edit_user_query(object $pdo, int $id, string $fullname, string $email, 
     $stmt->bindParam(":dob", $dob);
     $stmt->bindParam(":gender", $gender);
     $stmt->bindParam(":user_role", $user_role);
-    $stmt->bindParam(":doctor_specialties", $doctor_specialty);
 
     $stmt->execute();
+
+    if ($user_role === "doctor" && $doctor_specialty !== "NULL"){
+        if (get_doctor_by_id($pdo, intval($id))){
+            $query = "UPDATE doctors SET doctor_specialties = :doctor_specialties WHERE id = :id;";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(":id",$id);
+            $stmt->bindParam(":doctor_specialties", $doctor_specialty);
+            $stmt->execute();
+        } else {
+            $query = "INSERT INTO doctors (id, doctor_specialties) VALUES (:id, :doctor_specialties);";
+            $stmt = $pdo->prepare($query);
+            $stmt->bindParam(":id", $id);
+            $stmt->bindParam(":doctor_specialties", $doctor_specialty);
+            $stmt->execute();
+        }
+    }
 }
 
 function get_user_by_id(object $pdo, int $id){
@@ -45,4 +60,14 @@ function get_user_by_id(object $pdo, int $id){
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result;
+}
+
+function get_doctor_by_id(object $pdo, int $id){
+    $query = "SELECT * FROM doctors WHERE id = :id;";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":id",$id);
+    $stmt->execute();
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result; 
 }

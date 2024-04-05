@@ -6,7 +6,7 @@ require_once "../includes/db.inc.php";
 
 
 if (isset($_GET['id']) && !empty($_SESSION) && $_SESSION["user_role"] == "admin") {
-    $user_id = $_GET['id'];
+    $user_id = intval(htmlspecialchars($_GET['id']));
     $_SESSION["sel_user_id"] = $user_id;
 } else {
     header("Location: ./login.php");

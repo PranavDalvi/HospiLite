@@ -7,8 +7,9 @@ require_once "../includes/db.inc.php";
 
 
 if (isset($_GET['id']) && !empty($_SESSION) && $_SESSION["user_role"] == "admin") {
-    $user_id = $_GET['id'];
+    $user_id = intval(htmlspecialchars($_GET['id']));
     $user_details = get_user_by_id($pdo, $user_id);
+    $doc_details = get_doctor_by_id($pdo, $user_id);
     $_SESSION["sel_user_id"] = $user_id;
 } else {
     header("Location: ./login.php");
@@ -117,14 +118,14 @@ if (isset($_GET['id']) && !empty($_SESSION) && $_SESSION["user_role"] == "admin"
                     <div class="input-box">
                         <label for="doctor_specialties">Doctor's specialty:</label>
                         <select name="doctor_specialties" id="doctor_specialties">
-                            <option value="NULL" <?php if (is_null($user_details['doctor_specialties'])) echo "selected"; ?>>N/A (for other roles)</option>
-                            <option value="Audiologist" <?php if ($user_details['doctor_specialties'] == "Audiologist") echo "selected"; ?>>Audiologist</option>
-                            <option value="Allergist" <?php if ($user_details['doctor_specialties'] == "Allergist") echo "selected"; ?>>Allergist</option>
-                            <option value="Anesthesiologist" <?php if ($user_details['doctor_specialties'] == "Anesthesiologist") echo "selected"; ?>>Anesthesiologist</option>
-                            <option value="Cardiologist" <?php if ($user_details['doctor_specialties'] == "Cardiologist") echo "selected"; ?>>Cardiologist</option>
-                            <option value="Dentist" <?php if ($user_details['doctor_specialties'] == "Dentist") echo "selected"; ?>>Dentist</option>
-                            <option value="Dermatologist" <?php if ($user_details['doctor_specialties'] == "Dermatologist") echo "selected"; ?>>Dermatologist</option>
-                            <option value="Endocrinologist" <?php if ($user_details['doctor_specialties'] == "Endocrinologist") echo "selected"; ?>>Endocrinologist</option>
+                            <option value="NULL" <?php if (is_null($doc_details['doctor_specialties'])) echo "selected"; ?>>N/A (for other roles)</option>
+                            <option value="Audiologist" <?php if ($doc_details['doctor_specialties'] == "Audiologist") echo "selected"; ?>>Audiologist</option>
+                            <option value="Allergist" <?php if ($doc_details['doctor_specialties'] == "Allergist") echo "selected"; ?>>Allergist</option>
+                            <option value="Anesthesiologist" <?php if ($doc_details['doctor_specialties'] == "Anesthesiologist") echo "selected"; ?>>Anesthesiologist</option>
+                            <option value="Cardiologist" <?php if ($doc_details['doctor_specialties'] == "Cardiologist") echo "selected"; ?>>Cardiologist</option>
+                            <option value="Dentist" <?php if ($doc_details['doctor_specialties'] == "Dentist") echo "selected"; ?>>Dentist</option>
+                            <option value="Dermatologist" <?php if ($doc_details['doctor_specialties'] == "Dermatologist") echo "selected"; ?>>Dermatologist</option>
+                            <option value="Endocrinologist" <?php if ($doc_details['doctor_specialties'] == "Endocrinologist") echo "selected"; ?>>Endocrinologist</option>
                         </select>
                     </div>
                     <button class="submit-btn">Submit</button>
