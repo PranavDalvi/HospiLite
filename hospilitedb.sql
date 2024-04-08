@@ -11,13 +11,13 @@ CREATE TABLE users(
     PRIMARY KEY(id)
 );
 
-CREATE TABLE patients (
-    id INT PRIMARY KEY,
-    disease varchar(255) DEFAULT NULL,
-    allergy varchar(255) DEFAULT NULL,
-    prescription varchar(255) DEFAULT NULL,
-    FOREIGN KEY (id) REFERENCES users(id) ON DELETE CASCADE
-);
+-- CREATE TABLE patients (
+--     id INT PRIMARY KEY,
+--     disease varchar(255) DEFAULT NULL,
+--     allergy varchar(255) DEFAULT NULL,
+--     prescription varchar(255) DEFAULT NULL,
+--     FOREIGN KEY (id) REFERENCES users(id) ON DELETE CASCADE
+-- );
 
 CREATE TABLE appointments (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -30,7 +30,8 @@ CREATE TABLE appointments (
     userStatus VARCHAR(10) DEFAULT NULL,
     doctorStatus VARCHAR(10) DEFAULT NULL,
     fees DECIMAL(5) DEFAULT NULL,
-    FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
+    FOREIGN KEY (patient_id) REFERENCES users(id) ON DELETE CASCADE
+    -- FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
 );
 
 CREATE TABLE doctors(

@@ -2,9 +2,12 @@
 require_once "../includes/config_session.inc.php";
 require_once "../includes/db.inc.php";
 require_once "../includes/mvc_appointments/appointment_model.inc.php";
+require_once "../includes/mvc_appointments/appointment_view.inc.php";
 if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"] !== "user") {
     header("Location: ./login.php");
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -23,13 +26,12 @@ if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"]
     <?php
     include_once "../components/navbar/navbar_user.php";
     ?>
-
     <main>
         <h2>HospiLite - New Appointment</h2>
         <div class="reg-body">
             <div class="reg-container">
                 <!-- <h1 class="header">Registration Form</h1> -->
-                <form action="appointment.inc.php" class="form" method="post">
+                <form action="../includes/appointment.inc.php" class="form" method="post">
 
                     <div class="input-box">
                         <label for="doctor_specialties">Doctor:</label>
@@ -72,7 +74,7 @@ if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"]
                     <button class="submit-btn">Submit</button>
                 </form>
                 <?php
-
+                    check_create_appointments_errors()
                 ?>
             </div>
         </div>

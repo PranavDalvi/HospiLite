@@ -1,16 +1,18 @@
 <?php
+require_once "../includes/config_session.inc.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $doctor_id = $_POST["doctor_specialties"];
     $date = $_POST["date"];
     $time_slot = $_POST["time-slot"];
     $reason = $_POST["reason"];
+    $patient_id = $_SESSION["user_id"];
 
     try{
 
         require_once "./db.inc.php";
-        require_once "./mvc_appointment/appointment_model.inc.php";
-        require_once "./mvc_appointment/appointment_contr.inc.php";
+        require_once "./mvc_appointments/appointment_model.inc.php";
+        require_once "./mvc_appointments/appointment_contr.inc.php";
 
         $errors = [];
         if (is_input_empty($date, $time_slot, $reason)) {
@@ -36,11 +38,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ];
             $_SESSION["appointment_data"] = $appointmentData;
 
-            header("Location: ../page/appointment.php");
+            header("Location: ../page/appointments.php");
             die();
         }
 
-        create_appointment($pdo, $_SESSION["user_id"], $doctor_id, $date, $time_slot, $reason);
+        create_appointment($pdo, $patient_id, $doctor_id, $date, $time_slot, $reason);
+        header("Location: ../page/appointments.php?newApp=success");
+        $pdo = null;
+        $stmt = null;
+        die();
 
     } catch (PDOException $error){
         die("Query failed: ". $error->getMessage());

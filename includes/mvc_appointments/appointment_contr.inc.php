@@ -10,9 +10,9 @@ function is_input_empty(string $date, string $time_slot, string $reason){
 }
 
 function is_time_slot_occupied(object $pdo, int $doctor_id, string $date, string $time_slot){
-    $result = get_appointments_by_doc_id($pdo, $doctor_id); 
+    $result = fetch_appointments_with_date_time_slot ($pdo, $doctor_id, $date, $time_slot); 
 
-    if ($result["appointment_date"] === $date && $result["time_slot"] === $time_slot){
+    if (!empty($result)){
         return true;
     } else {
         return false;
@@ -20,5 +20,10 @@ function is_time_slot_occupied(object $pdo, int $doctor_id, string $date, string
 }
 
 function is_date_invalid(string $date){
-
+    $parsedDate = strtotime($date);
+    if ($parsedDate < time()){
+        return true;
+    } else {
+        return false;
+    }
 }

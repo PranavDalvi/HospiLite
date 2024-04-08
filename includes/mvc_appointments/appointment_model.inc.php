@@ -10,21 +10,24 @@ function get_all_doctors(object $pdo){
     return $result;
 }
 
-function get_appointments_by_doc_id(object $pdo, int $doctor_id){
-    $query = "SELECT * FROM appointments WHERE doctor_id = :doctor_id;";
+function fetch_appointments_with_date_time_slot(object $pdo, int $doctor_id, string $date, string $time_slot){
+    $query = "SELECT * FROM appointments WHERE doctor_id = :doctor_id AND appointment_date = :appointment_date AND time_slot = :time_slot;";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(":doctor_id", $doctor_id);
+    $stmt->bindParam(":appointment_date", $date);
+    $stmt->bindParam(":time_slot", $time_slot);
+
     $stmt->execute();
 
     $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
     return $result;
 }
 
-function create_appointment(object $pdo, int $user_id, int $doctor_id, string $date, string $time_slot, string $reason){
+function create_appointment(object $pdo, int $patient_id, int $doctor_id, string $date, string $time_slot, string $reason){
     $query = "INSERT INTO appointments (patient_id, doctor_id, appointment_date, time_slot, reason) VALUES (:patient_id, :doctor_id, :appointment_date, :time_slot, :reason);";
     $stmt = $pdo->prepare($query);
 
-    $stmt->bindParam(":patient_id", $user_id);
+    $stmt->bindParam(":patient_id", $patient_id);
     $stmt->bindParam(":doctor_id", $doctor_id);
     $stmt->bindParam(":appointment_date", $date);
     $stmt->bindParam(":time_slot", $time_slot);
