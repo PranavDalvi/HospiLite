@@ -21,9 +21,9 @@ require_once "../includes/mvc_update_pwd/update_pwd_view.inc.php";
     } else if (isset($_SESSION["user_id"]) && $_SESSION["user_role"] === "user") {
         include_once "../components/navbar/navbar_user.php";
     } else if (isset($_SESSION["user_id"]) && $_SESSION["user_role"] === "doctor") {
-        include_once "../components/navbar/navbar_admin.php";
+        include_once "../components/navbar/navbar_doctor.php";
     } else if (isset($_SESSION["user_id"]) && $_SESSION["user_role"] === "clerk") {
-        include_once "../components/navbar/navbar_admin.php";
+        include_once "../components/navbar/navbar_clerk.php";
     } else {
         header("Location: ./login.php");
     }

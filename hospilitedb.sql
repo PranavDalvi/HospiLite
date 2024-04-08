@@ -27,7 +27,7 @@ CREATE TABLE appointments (
     time_slot VARCHAR(20) NOT NULL,
     reason VARCHAR(255) NOT NULL,
     notes TEXT DEFAULT NULL,
-    userStatus VARCHAR(10) DEFAULT NULL,
+    userStatus VARCHAR(10) DEFAULT "pending",
     doctorStatus VARCHAR(10) DEFAULT NULL,
     fees DECIMAL(5) DEFAULT NULL,
     FOREIGN KEY (patient_id) REFERENCES users(id) ON DELETE CASCADE

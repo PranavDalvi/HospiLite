@@ -82,7 +82,7 @@ if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"]
         </div>
         <?php
         check_acc_del_errors();
-        check_edit_user_errors()
+        check_edit_user_errors();
         ?>
     </main>
 </body>

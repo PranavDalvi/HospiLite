@@ -8,6 +8,6 @@ if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"]
 }
 ?>
 <main>
-    <h1>HospiLite - Admin DashBoard</h1>
+    <h1>HospiLite - Admin Dashboard</h1>
     <?php echo '<h2> Welcome  ' . $_SESSION["user_name"] . '</h2>'; ?>
 </main>
