@@ -117,16 +117,30 @@ if (isset($_GET['id']) && !empty($_SESSION) && $_SESSION["user_role"] == "admin"
                     </div>
                     <div class="input-box">
                         <label for="doctor_specialties">Doctor's specialty:</label>
-                        <select name="doctor_specialties" id="doctor_specialties">
-                            <option value="NULL" <?php if (is_null($doc_details['doctor_specialties'])) echo "selected"; ?>>N/A (for other roles)</option>
-                            <option value="Audiologist" <?php if ($doc_details['doctor_specialties'] == "Audiologist") echo "selected"; ?>>Audiologist</option>
-                            <option value="Allergist" <?php if ($doc_details['doctor_specialties'] == "Allergist") echo "selected"; ?>>Allergist</option>
-                            <option value="Anesthesiologist" <?php if ($doc_details['doctor_specialties'] == "Anesthesiologist") echo "selected"; ?>>Anesthesiologist</option>
-                            <option value="Cardiologist" <?php if ($doc_details['doctor_specialties'] == "Cardiologist") echo "selected"; ?>>Cardiologist</option>
-                            <option value="Dentist" <?php if ($doc_details['doctor_specialties'] == "Dentist") echo "selected"; ?>>Dentist</option>
-                            <option value="Dermatologist" <?php if ($doc_details['doctor_specialties'] == "Dermatologist") echo "selected"; ?>>Dermatologist</option>
-                            <option value="Endocrinologist" <?php if ($doc_details['doctor_specialties'] == "Endocrinologist") echo "selected"; ?>>Endocrinologist</option>
-                        </select>
+                        <?php
+                        $selectedSpecialty = $doc_details['doctor_specialties'] ?? null;
+
+                        echo '<select name="doctor_specialties" id="doctor_specialties">';
+                        echo "<option value='NULL'" . ($selectedSpecialty === null ? ' selected' : '') . ">N/A (for other roles)</option>";
+
+                        $specialties = [
+                            "Audiologist",
+                            "Allergist",
+                            "Anesthesiologist",
+                            "Cardiologist",
+                            "Dentist",
+                            "Dermatologist",
+                            "Endocrinologist"
+                        ];
+
+                        foreach ($specialties as $specialty) {
+                            $isSelected = $specialty === $selectedSpecialty;
+                            echo "<option value='$specialty'" . ($isSelected ? ' selected' : '') . ">$specialty</option>";
+                        }
+
+                        echo '</select>';
+                        ?>
+
                     </div>
                     <button class="submit-btn">Submit</button>
                 </form>

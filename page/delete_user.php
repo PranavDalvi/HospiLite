@@ -3,6 +3,7 @@
 include_once "../components/navbar/navbar_admin.php";
 require_once "../includes/config_session.inc.php";
 require_once "../includes/db.inc.php";
+require_once "../includes/mvc_delete_account/delete_account_view.inc.php";
 
 
 if (isset($_GET['id']) && !empty($_SESSION) && $_SESSION["user_role"] == "admin") {

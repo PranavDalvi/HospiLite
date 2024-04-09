@@ -29,8 +29,8 @@ CREATE TABLE appointments (
     notes TEXT DEFAULT NULL,
     userStatus VARCHAR(10) DEFAULT "unpaid",
     doctorStatus VARCHAR(10) DEFAULT "pending",
-    fees DECIMAL(5) DEFAULT NULL,
-    FOREIGN KEY (patient_id) REFERENCES users(id) ON DELETE CASCADE
+    fees DECIMAL(5) DEFAULT 0,
+    FOREIGN KEY (patient_id) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (doctor_id) REFERENCES doctors(id) ON DELETE CASCADE
     -- FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
 );

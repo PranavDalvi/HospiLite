@@ -23,13 +23,11 @@ if (empty($_SESSION) || !isset($_SESSION["user_role"]) || $_SESSION["user_role"]
 
 <body>
     <?php
-    include_once "../components/navbar/navbar_doctor.php";
+    include_once "../components/navbar/navbar_user.php";
     ?>
     <main>
         <h2>HospiLite - Reports</h2>
         <div class="wrapper">
-            
-            
             <?php
             $results = get_appointments_by_patient_id_status($pdo, $_SESSION["user_id"]);
             if ($results) {

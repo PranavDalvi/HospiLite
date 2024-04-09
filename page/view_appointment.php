@@ -11,6 +11,7 @@ if (empty($_GET["appoId"]) || empty($_SESSION) || !isset($_SESSION["user_role"])
     $appointment_id = $_GET["appoId"];
     $_SESSION["sel_appo_id"] = $appointment_id;
     $result = get_appointment_by_id($pdo, $appointment_id);
+    $sanitizedNotes = (isset($result["notes"]) && !empty($result["notes"])) ? htmlspecialchars($result["notes"]) : '';
 }
 ?>
 
@@ -74,7 +75,7 @@ if (empty($_GET["appoId"]) || empty($_SESSION) || !isset($_SESSION["user_role"])
                     </div>
                     <div class="input-box">
                         <label for="prescriptions">Prescriptions:</label>
-                        <?php echo '<textarea name="appo_reason" type="text" disabled> ' . htmlspecialchars($result["notes"]) . ' </textarea>' ?>
+                        <?php echo '<textarea name="appo_reason" type="text" disabled> ' . $sanitizedNotes . ' </textarea>' ?>
                     </div>
                     <div class="input-box">
                         <label for="doctor-status">Appointment Status:</label>
@@ -86,11 +87,15 @@ if (empty($_GET["appoId"]) || empty($_SESSION) || !isset($_SESSION["user_role"])
                         <?php echo '<input name="fees" type="text" value="' . htmlspecialchars($result["fees"]) . '" disabled>' ?>
                     </div>
                     <?php 
+                    if ($result["fees"] != 0){
                     if(check_unpaid_fees($result["userStatus"])){
                         echo '<button class="submit-btn">Pay Fees</button>';
                     } else{
                         echo '<p>Thank-you for using HospiLite.</p>';
                     }
+                } else{
+                    echo'<p>Pay fees button will be available after visit, Thank you for using HospiLite.</p>';
+                }
                     ?>
                     
                 </form>
